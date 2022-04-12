@@ -1,0 +1,10 @@
+0 silly argv { _: [ 'create' ], lernaVersion: '4.0.0', '$0': 'lerna', name: 'core' }
+1 notice cli v4.0.0
+2 verbose rootPath /Users/zervantozhao/Desktop/code/work/demo/zero-cli/zero-cli-dev
+3 error Error: git config --global user.name "your_username"
+3 error     at makeError (/usr/local/lib/node_modules/lerna/node_modules/execa/lib/error.js:60:11)
+3 error     at Function.module.exports.sync (/usr/local/lib/node_modules/lerna/node_modules/execa/index.js:194:17)
+3 error     at Object.execSync (/usr/local/lib/node_modules/lerna/node_modules/@lerna/child-process/index.js:39:16)
+3 error     at CreateCommand.gitConfig (/usr/local/lib/node_modules/lerna/node_modules/@lerna/create/index.js:181:25)
+3 error     at CreateCommand.initialize (/usr/local/lib/node_modules/lerna/node_modules/@lerna/create/index.js:103:46)
+3 error     at /usr/local/lib/node_modules/lerna/node_modules/@lerna/command/index.js:274:24
