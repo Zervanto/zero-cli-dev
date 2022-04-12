@@ -24,5 +24,8 @@
   },
   "devDependencies": {
     "@zero-cli-dev/utils": "file:../../utils/utils"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
