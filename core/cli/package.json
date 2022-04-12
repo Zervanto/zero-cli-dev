@@ -8,6 +8,9 @@
   "author": "zervanto <10193355009@qq.com>",
   "homepage": "",
   "license": "ISC",
+  "bin": {
+    "zero-cli-dev": "bin/index.js"
+  },
   "main": "lib/core.js",
   "directories": {
     "lib": "lib",

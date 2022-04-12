@@ -2,4 +2,4 @@
 const utils = require('@zero-cli-dev/utils')
 
 utils()
-console.log('hello zero-cli')
+console.log('hello zero-cli 2022')
