@@ -1,5 +1,5 @@
 {
-  "name": "core",
+  "name": "@zero-cli-dev/core",
   "version": "0.0.2",
   "description": "@zero-cli/core",
   "keywords": [
@@ -27,5 +27,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "gitHead": "dfe850c9461810e6d64a65e5785616e1a706b4c4"
 }

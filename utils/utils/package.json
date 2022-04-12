@@ -1,7 +1,7 @@
 {
-  "name": "utils",
+  "name": "@zero-cli-dev/utils",
   "version": "0.0.2",
-  "description": "> TODO: description",
+  "description": "@zero-cli/utils",
   "author": "zervanto <10193355009@qq.com>",
   "homepage": "",
   "license": "ISC",
@@ -18,5 +18,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "gitHead": "dfe850c9461810e6d64a65e5785616e1a706b4c4"
 }
