@@ -19,6 +19,7 @@
   "files": [
     "lib"
   ],
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
@@ -27,6 +28,12 @@
   },
   "gitHead": "dfe850c9461810e6d64a65e5785616e1a706b4c4",
   "dependencies": {
-    "import-local": "^3.1.0"
+    "@zero-cli-dev/log": "file:../../utils/log",
+    "colors": "^1.4.0",
+    "import-local": "^3.1.0",
+    "path-exists": "^5.0.0",
+    "root-check": "^2.0.0",
+    "semver": "^7.3.7",
+    "user-home": "^3.0.0"
   }
 }

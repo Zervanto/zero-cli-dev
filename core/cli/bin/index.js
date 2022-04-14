@@ -1,11 +1,18 @@
 #! /usr/bin/env node
-const utils = require('@zero-cli-dev/utils/lib');
-const importLocal = require('import-local');
+// import { createRequire } from "module";
+import path from "path";
+const __dirname = path.resolve();
+const __filename = import.meta.url && import.meta.url.substring(7, import.meta.url.length); // 截掉file://
+// const require = createRequire(import.meta.url);
+// console.log(path);
+import log from '@zero-cli-dev/log';
+import importLocal from 'import-local';
+import core from '../lib/index.js';
+console.log(__dirname);
 console.log(__filename);
 if (importLocal(__filename)) {
-	require('npmlog').info('cli', '正在使用zero-cli 本地版本');
+	log.info('cli', '正在使用zero-cli 本地版本');
 } else {
-	require('../lib')(process.argv.slice(2)); // core
+	core(process.argv.slice(2)); // core
 }
-utils()
-console.log('hello zero-cli 2023')
+console.log('hello zero-cli 2022')
