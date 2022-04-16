@@ -2,23 +2,30 @@
 // import { createRequire } from "module";
 // const require from createRequire(import.meta.url);
 import log from '@zero-cli-dev/log';
-// import pkg from '../package.json';
+import path from 'path';
+// const pkg = require('../package.json');
 import fs from 'fs';
-const pkg = JSON.parse(fs.readFileSync('./package.json'));
+const pkg = JSON.parse(fs.readFileSync('./core/cli/package.json'));
 import constant from './const.js';
-import semver from 'semver';
+import semver from 'semver'; // 版本号比较
 import colors from 'colors/safe.js';
-import rootCheck from 'root-check'; // 这个是纯ES module的库
-import userHome from 'user-home';
-import {pathExists} from 'path-exists';
-import process from 'process';
-
+import rootCheck from 'root-check'; // 检查root账号 这个是纯ES module的库 
+import userHome from 'user-home'; // 用户主目录
+import {pathExists} from 'path-exists'; // 路径是否存在
+import process from 'process'; // node 进程
+import minimist from 'minimist'; //
+import dotenv from 'dotenv';
+console.log(pkg);
+let config;
 export default function core() {
     try {
         checkPkgVersion(); // 检查package版本
         checkNodeVersion(); // 检查node版本
         checkRoot(); // 检查是否root账号启动
         checkUserHome(); // 检查用户主目录
+        checkInputArgs(); //检查入参 debug模式
+        log.verbose('debug', 'test debug log');
+        checkEnv(); // 检查环境变量
     } catch(e){
         log.error(e.message);
     }
@@ -39,7 +46,7 @@ function checkNodeVersion() {
 
 function checkRoot(){
     rootCheck();
-    console.log(process.geteuid);
+    // console.log(process.geteuid);
 }
 
 function checkUserHome(){
@@ -48,8 +55,36 @@ function checkUserHome(){
     }
 }
 
-function checkParams (){}
+function checkInputArgs (){
+    const args = minimist(process.argv.slice(2));
+    if(args.debug) {
+        process.env.LOG_LEVEL = 'verbose';
+    } else {
+        process.env.LOG_LEVEL = 'info';
+    }
+    log.level = process.env.LOG_LEVEL;
+}
 
-function checkEnvVal(){}
+function checkEnv(){
+    const dotenvPath = path.resolve(userHome, 'env');
+    if(pathExists(dotenvPath)){
+        config = dotenv.config({
+            path:dotenvPath
+        });
+    }
+    createDefaultConfig(); // 创建默认环境变量的配置
+    log.verbose('环境变量', process.env.CLI_HOME_PATH);
+}
 
+function createDefaultConfig(){
+    const cliConfig = {
+        home: userHome
+    };
+    if(process.env.CLI_HOME){
+        cliConfig['cliHome'] = path.join(userHome, process.env.CLI_HOME);
+    } else {
+        cliConfig['cliHome'] = path.join(userHome, constant.DEFAULT_CLI_HOME);
+    }
+    process.env.CLI_HOME_PATH = cliConfig.cliHome;
+}
 function checkUpdate(){}

@@ -1,9 +1,9 @@
 #! /usr/bin/env node
 // import { createRequire } from "module";
+// const require = createRequire(import.meta.url);
 import path from "path";
 const __dirname = path.resolve();
 const __filename = import.meta.url && import.meta.url.substring(7, import.meta.url.length); // 截掉file://
-// const require = createRequire(import.meta.url);
 // console.log(path);
 import log from '@zero-cli-dev/log';
 import importLocal from 'import-local';
