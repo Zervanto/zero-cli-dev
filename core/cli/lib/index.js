@@ -15,10 +15,10 @@ import {pathExists} from 'path-exists'; // 路径是否存在
 import process from 'process'; // node 进程
 import minimist from 'minimist'; //
 import dotenv from 'dotenv'; // 从env文件中加载环境变量
-import getNpmInfo from '@zero-cli-dev/get-npm-info';
+import { getNpmSemverVersions } from '@zero-cli-dev/get-npm-info';
 console.log(pkg);
 let config;
-export default function core() {
+export default async function core() {
     try {
         checkPkgVersion(); // 检查package版本
         checkNodeVersion(); // 检查node版本
@@ -89,12 +89,13 @@ function createDefaultConfig(){
     }
     process.env.CLI_HOME_PATH = cliConfig.cliHome;
 }
-function checkGlobalUpdate(){
+async function checkGlobalUpdate(){
     // 1. 获取当前版本号和模块名
     const currentVersion = pkg.version;
     const npmName = pkg.name;
     // 2. 调用npm API, 获取所有版本号
-    getNpmInfo(npmName);
+    const newVersion = await getNpmSemverVersions(currentVersion, npmName);
+    console.log(newVersion);
     // 3. 判断是否有比当前版本号更大的版本
     // 4. 提示用户更新到最新版本
 }
