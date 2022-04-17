@@ -26,10 +26,10 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "dfe850c9461810e6d64a65e5785616e1a706b4c4",
+  "gitHead": "7e2f52fe610518ad4d5420ade1925f7abf36cfc5",
   "dependencies": {
-    "@zero-cli-dev/get-npm-info": "file:../../utils/get-npm-info",
-    "@zero-cli-dev/log": "file:../../utils/log",
+    "@zero-cli-dev/get-npm-info": "^0.0.6",
+    "@zero-cli-dev/log": "^0.0.6",
     "colors": "^1.4.0",
     "dotenv": "^16.0.0",
     "import-local": "^3.1.0",

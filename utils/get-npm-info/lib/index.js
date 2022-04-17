@@ -42,7 +42,6 @@ async function getNpmSemverVersions(baseVersion, npmName, registry) {
     const versions = await getNpmVersions(npmName, registry);
     console.log(versions);
     const newVersions = getSemverVersions(baseVersion, versions);
-    console.log(newVersions);
     if(newVersions && newVersions.length > 0) {
         return newVersions[0];
     }
