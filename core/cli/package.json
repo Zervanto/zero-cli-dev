@@ -1,6 +1,6 @@
 {
   "name": "@zero-cli-dev/core",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "@zero-cli-dev/core",
   "keywords": [
     "core"
@@ -28,8 +28,8 @@
   },
   "gitHead": "dfe850c9461810e6d64a65e5785616e1a706b4c4",
   "dependencies": {
-    "@zero-cli-dev/log": "file:../../utils/log",
     "@zero-cli-dev/get-npm-info": "file:../../utils/get-npm-info",
+    "@zero-cli-dev/log": "file:../../utils/log",
     "colors": "^1.4.0",
     "dotenv": "^16.0.0",
     "import-local": "^3.1.0",
