@@ -1,0 +1,34 @@
+{
+  "name": "@zero-cli-dev/exec",
+  "version": "0.0.6",
+  "description": "exec package",
+  "author": "zervanto <1019335509@qq.com>",
+  "homepage": "https://github.com/Zervanto/zero-cli-dev#readme",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zervanto/zero-cli-dev.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/Zervanto/zero-cli-dev/issues"
+  },
+  "dependencies": {
+    "@zero-cli-dev/package": "^0.0.6",
+    "@zero-cli-dev/log": "^0.0.6"
+  }
+}
