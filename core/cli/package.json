@@ -30,6 +30,7 @@
   "dependencies": {
     "@zero-cli-dev/get-npm-info": "^0.0.6",
     "@zero-cli-dev/log": "^0.0.6",
+    "@zero-cli-dev/init": "^0.0.6",
     "colors": "^1.4.0",
     "commander": "^9.2.0",
     "dotenv": "^16.0.0",

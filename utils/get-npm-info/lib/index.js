@@ -9,9 +9,9 @@ function getNpmInfo(npmName, registry) {
         return null;
     }
     registry = registry || getDefaultRegistry();
-    console.log(npmName);
+    // console.log(npmName);
     const npmInfoUrl = urlJoin(registry, npmName);
-    console.log(npmInfoUrl);
+    // console.log(npmInfoUrl);
     
     return axios.get(npmInfoUrl).then(res => {
         if(res.status === 200) {
@@ -40,7 +40,7 @@ function getSemverVersions(baseVersion, versions) {
 } 
 async function getNpmSemverVersions(baseVersion, npmName, registry) {
     const versions = await getNpmVersions(npmName, registry);
-    console.log(versions);
+    // console.log(versions);
     const newVersions = getSemverVersions(baseVersion, versions);
     if(newVersions && newVersions.length > 0) {
         return newVersions[0];

@@ -16,22 +16,11 @@ import process from 'process'; // node 进程
 import minimist from 'minimist'; //
 import dotenv from 'dotenv'; // 从env文件中加载环境变量
 import { getNpmSemverVersions } from '@zero-cli-dev/get-npm-info';
-console.log(pkg);
+import init from '@zero-cli-dev/init';
+import { Command } from 'commander';
+const program = new Command();
+// console.log(pkg);
 let config;
-export default async function core() {
-    try {
-        checkPkgVersion(); // 检查package版本
-        checkNodeVersion(); // 检查node版本
-        checkRoot(); // 检查是否root账号启动
-        checkUserHome(); // 检查用户主目录
-        checkInputArgs(); //检查入参 debug模式
-        log.verbose('debug', 'test debug log');
-        checkEnv(); // 检查环境变量
-        checkGlobalUpdate(); // 检查全局更新
-    } catch(e){
-        log.error(e.message);
-    }
-}
 
 function checkPkgVersion(){
     log.info('cli', pkg.version);
@@ -101,5 +90,51 @@ async function checkGlobalUpdate(){
         log.warn('更新提示', color.yellow(`请手动更新${npmName}, 当前版本：${currentVersion}, 最新版本：${lastVersion}
         更新命令： npm install -g ${npmName}`));
     }
+}
 
+function registerCommand () {
+    program
+    .name(Object.keys(pkg.bin)[0])
+    .version(pkg.version)
+    .usage('<command> [options]')
+    .option('-d debug', '是否开启调试模式', false);
+    program.command('init [projectName]')
+    .option('-f, --force', '是否强制初始化项目')
+    .action(init)
+
+    program.on('option:debug', function(){
+        if(program.debug) {
+            process.env.LOG_LEVEL = 'verbose';
+        } else {
+            process.env.LOG_LEVEL = 'info';
+        }
+        log.level = process.env.LOG_LEVEL;
+    })
+    program.on('command:*', function(obj) {
+        const availableCommands = program.commands.map(cmd => cmd.name());
+        log.info(colors.red('未知的命令：'+ obj[0]));
+        if(availableCommands.length > 0) {
+            log.info(colors.red('可用命令：'+ availableCommands.join(',')));
+        }
+    })
+    if(process.argv.length < 3) {
+        program.outputHelp();
+    }
+    program.parse(process.argv)
+}
+
+export default async function core() {
+    try {
+        checkPkgVersion(); // 检查package版本
+        checkNodeVersion(); // 检查node版本
+        checkRoot(); // 检查是否root账号启动
+        checkUserHome(); // 检查用户主目录
+        checkInputArgs(); //检查入参 debug模式
+        log.verbose('debug', 'test debug log');
+        checkEnv(); // 检查环境变量
+        checkGlobalUpdate(); // 检查全局更新
+        registerCommand();
+    } catch(e){
+        log.error(e.message);
+    }
 }
