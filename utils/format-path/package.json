@@ -1,7 +1,7 @@
 {
-  "name": "@zero-cli-dev/package",
+  "name": "@zero-cli-dev/format-path",
   "version": "0.0.6",
-  "description": "package",
+  "description": "> TODO: description",
   "author": "zervanto <1019335509@qq.com>",
   "homepage": "https://github.com/Zervanto/zero-cli-dev#readme",
   "license": "ISC",
@@ -26,11 +26,5 @@
   },
   "bugs": {
     "url": "https://github.com/Zervanto/zero-cli-dev/issues"
-  },
-  "dependencies": {
-    "@zero-cli-dev/log": "^0.0.6",
-    "@zero-cli-dev/utils": "^0.0.6",
-    "@zero-cli-dev/format-path": "^0.0.6",
-    "pkg-dir": "^6.0.1"
   }
 }
