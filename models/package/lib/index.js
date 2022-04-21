@@ -5,6 +5,10 @@ import { isObject } from '@zero-cli-dev/utils';
 import formatPath from '@zero-cli-dev/format-path';
 import { packageDirectorySync } from 'pkg-dir';
 import path from 'path';
+import npminstall from 'npminstall';
+import userHome from 'user-home';
+import { getDefaultRegistry } from '@zero-cli-dev/get-npm-info';
+
 class Package {
   constructor(options) {
     if (!options) {
@@ -17,7 +21,7 @@ class Package {
     // package的路径
     this.targetPath = options.targetPath;
     // package的存储路径
-    this.storePath = options.storePath;
+    this.storeDir = options.storeDir;
     this.homePath = options.homePath;
     this.packageName = options.packageName;
     this.packageVersion = options.packageVersion;
@@ -25,7 +29,20 @@ class Package {
   // 判断当前package是否存在
   exists() {}
   // 安装package
-  install() {}
+  install() {
+    (async () => {
+        await npminstall({
+          root: this.targetPath,
+          pkgs: [
+            { name: this.packageName, version: this.packageVersion },
+          ],
+          registry: getDefaultRegistry(true),
+          storeDir: this.storeDir
+        });
+      })().catch(err => {
+        throw new Error(err);
+      });
+  }
   // 更新package
   update() {}
   // 获取入口文件的路径
@@ -40,8 +57,6 @@ class Package {
           // 路径兼容处理 window/mac
           return formatPath(path.resolve(dir, file.main));
       }     
-    
-    formatPath()
     }
     return null;
     

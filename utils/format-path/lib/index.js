@@ -1,10 +1,10 @@
 'use strict';
 import path from 'path';
-export function formatPath(p) {
+export default function formatPath(p) {
     const sep = path.sep;
     if(sep === '/'){
         return p;
     } else {
-        return p.replace(/\\/g, '/')
+        return p.replace(/\\/g, '/');
     }
 }

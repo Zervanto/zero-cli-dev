@@ -137,5 +137,8 @@ export default async function core() {
   
   } catch (e) {
     log.error(e.message);
+    if(program.opts().debug) {
+      console.log(e);
+    }
   }
 }

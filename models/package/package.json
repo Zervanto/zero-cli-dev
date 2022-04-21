@@ -28,9 +28,12 @@
     "url": "https://github.com/Zervanto/zero-cli-dev/issues"
   },
   "dependencies": {
+    "@zero-cli-dev/format-path": "^0.0.6",
     "@zero-cli-dev/log": "^0.0.6",
     "@zero-cli-dev/utils": "^0.0.6",
-    "@zero-cli-dev/format-path": "^0.0.6",
-    "pkg-dir": "^6.0.1"
+    "@zero-cli-dev/get-npm-info": "^0.0.6",
+    "npminstall": "^6.1.0",
+    "pkg-dir": "^6.0.1",
+    "user-home": "^3.0.0"
   }
 }
