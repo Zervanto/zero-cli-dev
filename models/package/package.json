@@ -1,6 +1,6 @@
 {
   "name": "@zero-cli-dev/package",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "package",
   "author": "zervanto <1019335509@qq.com>",
   "homepage": "https://github.com/Zervanto/zero-cli-dev#readme",
@@ -28,10 +28,10 @@
     "url": "https://github.com/Zervanto/zero-cli-dev/issues"
   },
   "dependencies": {
-    "@zero-cli-dev/format-path": "^0.0.6",
-    "@zero-cli-dev/log": "^0.0.6",
-    "@zero-cli-dev/utils": "^0.0.6",
-    "@zero-cli-dev/get-npm-info": "^0.0.6",
+    "@zero-cli-dev/format-path": "^0.0.7",
+    "@zero-cli-dev/get-npm-info": "^0.0.7",
+    "@zero-cli-dev/log": "^0.0.7",
+    "@zero-cli-dev/utils": "^0.0.7",
     "npminstall": "^6.1.0",
     "pkg-dir": "^6.0.1",
     "user-home": "^3.0.0"

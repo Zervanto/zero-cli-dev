@@ -1,6 +1,6 @@
 {
   "name": "@zero-cli-dev/exec",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "exec package",
   "author": "zervanto <1019335509@qq.com>",
   "homepage": "https://github.com/Zervanto/zero-cli-dev#readme",
@@ -28,7 +28,7 @@
     "url": "https://github.com/Zervanto/zero-cli-dev/issues"
   },
   "dependencies": {
-    "@zero-cli-dev/package": "^0.0.6",
-    "@zero-cli-dev/log": "^0.0.6"
+    "@zero-cli-dev/log": "^0.0.7",
+    "@zero-cli-dev/package": "^0.0.7"
   }
 }

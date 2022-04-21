@@ -1,6 +1,6 @@
 {
   "name": "@zero-cli-dev/init",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "@zero-cli-dev/init",
   "author": "zervanto <1019335509@qq.com>",
   "homepage": "https://github.com/Zervanto/zero-cli-dev#readme",
@@ -13,7 +13,7 @@
   "files": [
     "lib"
   ],
-  "type":"module",
+  "type": "module",
   "publishConfig": {
     "access": "public"
   },
