@@ -32,8 +32,11 @@
     "@zero-cli-dev/get-npm-info": "^0.0.7",
     "@zero-cli-dev/log": "^0.0.7",
     "@zero-cli-dev/utils": "^0.0.7",
+    "fs-extra": "^10.1.0",
     "npminstall": "^6.1.0",
+    "path-exists": "^5.0.0",
     "pkg-dir": "^6.0.1",
     "user-home": "^3.0.0"
-  }
+  },
+  "gitHead": "34579cb846a64b4e7d8913b1d80132b26c0aebca"
 }
