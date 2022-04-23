@@ -6,6 +6,7 @@ import Package from '@zero-cli-dev/package';
 import log from '@zero-cli-dev/log';
 import path from 'path';
 import { createRequire } from 'module';
+import { cp } from 'fs';
 const require = createRequire(import.meta.url);
 
 const SETTINGS = {
@@ -46,7 +47,9 @@ async function exec() {
   const rootFile = pkg.getRootFilePath();
   console.log('rootFile', rootFile);
   if (rootFile) {
-    require(rootFile).apply(null, arguments);
+    // require(rootFile).apply(null, arguments);
+    // 使用子进程调用优化性能
+    // cp.spawn()
   }
 
   log.verbose('targetPath', targetPath);
