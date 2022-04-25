@@ -6,7 +6,7 @@ import Package from '@zero-cli-dev/package';
 import log from '@zero-cli-dev/log';
 import path from 'path';
 import { createRequire } from 'module';
-import { cp } from 'fs';
+// import { cp } from 'fs';
 const require = createRequire(import.meta.url);
 
 const SETTINGS = {
