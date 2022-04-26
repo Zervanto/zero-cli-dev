@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 import log from '@zero-cli-dev/log';
 import { isObject } from '@zero-cli-dev/utils';
@@ -7,7 +7,7 @@ import { packageDirectorySync } from 'pkg-dir';
 import path from 'path';
 import npminstall from 'npminstall';
 // import userHome from 'user-home';
-import cp from 'child_process';
+import cp from 'child_process'
 import fse from 'fs-extra';
 import {
   getDefaultRegistry,

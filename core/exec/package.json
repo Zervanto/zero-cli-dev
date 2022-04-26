@@ -28,8 +28,8 @@
     "url": "https://github.com/Zervanto/zero-cli-dev/issues"
   },
   "dependencies": {
-    "@zero-cli-dev/log": "^0.0.7",
-    "@zero-cli-dev/package": "^0.0.7"
+    "@zero-cli-dev/log": "file:../../utils/log",
+    "@zero-cli-dev/package": "file:../../models/package"
   },
   "gitHead": "34579cb846a64b4e7d8913b1d80132b26c0aebca"
 }
