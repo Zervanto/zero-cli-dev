@@ -1,6 +1,6 @@
 // 'use strict';
 
-import log from '@zero-cli-dev/log';
+// import log from '@zero-cli-dev/log';
 import { isObject } from '@zero-cli-dev/utils';
 import formatPath from '@zero-cli-dev/format-path';
 import { packageDirectorySync } from 'pkg-dir';
@@ -32,7 +32,9 @@ class Package {
     this.packageVersion = options.packageVersion;
     this.cacheFilePathPrefix = this.packageName.replace('/', '_');
   }
-  //
+  // _@zero-cli-dev_init@1.0.0@zero-cli-dev/
+  // @zero-cli-dev/init 1.0.0
+  // _@zero-cli-dev_init@1.0.0@@zero-cli-dev/
   get cacheFilePath() {
     this.cacheFilePathPrefix = this.packageName.replace('/', '_');
     return path.resolve(
@@ -42,6 +44,7 @@ class Package {
   }
   // 判断当前package是否存在
   async exists() {
+    // 缓存目录存在
     if (this.storeDir) {
       await this.prepare();
       return pathExistsSync(this.cacheFilePath);
@@ -62,6 +65,21 @@ class Package {
   // 更新package
   async update() {
       await this.prepare();
+      // 获取最新的npm模块版本号
+      const latestPackageVersion = await getNpmLatestVersion(this.packageName);
+      // 查询最新版本对应路径是否存在
+      const lastestFilePath = this.getSpecificCacheFilePath(latestPackageVersion);
+      // 如果不存在，更新到最新版本
+      if(!pathExistsSync(lastestFilePath)){
+          await npminstall({
+            root: this.targetPath,
+            pkgs: [{ name: this.packageName, version: latestPackageVersion }],
+            registry: getDefaultRegistry(true),
+            storeDir: this.storeDir,
+          });
+          this.packageVersion = latestPackageVersion;
+      }
+      
   }
 
   async prepare() {
@@ -78,14 +96,18 @@ class Package {
     const dir = packageDirectorySync(this.targetPath);
     if (dir) {
       // 读取package.json
-      const file = path.resolve(dir, 'package.json');
+      const pkgJson = JSON.parse(fse.readFileSync(path.resolve(dir, 'core/cli/', 'package.json')))
+      console.log('pkgJson', pkgJson);
       // 寻找main/lib
-      if (file && file.main) {
+      if (pkgJson && pkgJson.main) {
         // 路径兼容处理 window/mac
-        return formatPath(path.resolve(dir, file.main));
+        return formatPath(path.resolve(dir, pkgJson.main));
       }
     }
     return null;
+  }
+  getSpecificCacheFilePath (packageVersion) {
+    return path.resolve(this.storeDir, `_${this.cacheFilePathPrefix}@${packageVersion}@${this.packageName}`);
   }
 }
 

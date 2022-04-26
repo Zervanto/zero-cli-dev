@@ -1,10 +1,10 @@
-'use strict';
+// 'use strict';
 // import { createRequire } from "module";
 // const require from createRequire(import.meta.url);
 import log from '@zero-cli-dev/log';
-import path from 'path';
+import path from 'node:path';
 // const pkg = require('../package.json');
-import fs from 'fs';
+import fs from 'node:fs';
 const pkg = JSON.parse(fs.readFileSync('./core/cli/package.json'));
 import constant from './const.js';
 import semver from 'semver'; // 版本号比较
@@ -12,7 +12,7 @@ import colors from 'colors/safe.js';
 import rootCheck from 'root-check'; // 检查root账号 这个是纯ES module的库
 import userHome from 'user-home'; // 用户主目录
 import { pathExistsSync } from 'path-exists'; // 路径是否存在
-import process from 'process'; // node 进程
+import process from 'node:process'; // node 进程
 import dotenv from 'dotenv'; // 从env文件中加载环境变量
 import { getNpmSemverVersions } from '@zero-cli-dev/get-npm-info';
 import init from '@zero-cli-dev/init';
