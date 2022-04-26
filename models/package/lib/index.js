@@ -7,7 +7,7 @@ import { packageDirectorySync } from 'pkg-dir';
 import path from 'path';
 import npminstall from 'npminstall';
 // import userHome from 'user-home';
-import cp from 'child_process'
+import cp from 'child_process';
 import fse from 'fs-extra';
 import {
   getDefaultRegistry,
@@ -64,27 +64,26 @@ class Package {
   }
   // 更新package
   async update() {
-      await this.prepare();
-      // 获取最新的npm模块版本号
-      const latestPackageVersion = await getNpmLatestVersion(this.packageName);
-      // 查询最新版本对应路径是否存在
-      const lastestFilePath = this.getSpecificCacheFilePath(latestPackageVersion);
-      // 如果不存在，更新到最新版本
-      if(!pathExistsSync(lastestFilePath)){
-          await npminstall({
-            root: this.targetPath,
-            pkgs: [{ name: this.packageName, version: latestPackageVersion }],
-            registry: getDefaultRegistry(true),
-            storeDir: this.storeDir,
-          });
-          this.packageVersion = latestPackageVersion;
-      }
-      
+    await this.prepare();
+    // 获取最新的npm模块版本号
+    const latestPackageVersion = await getNpmLatestVersion(this.packageName);
+    // 查询最新版本对应路径是否存在
+    const lastestFilePath = this.getSpecificCacheFilePath(latestPackageVersion);
+    // 如果不存在，更新到最新版本
+    if (!pathExistsSync(lastestFilePath)) {
+      await npminstall({
+        root: this.targetPath,
+        pkgs: [{ name: this.packageName, version: latestPackageVersion }],
+        registry: getDefaultRegistry(true),
+        storeDir: this.storeDir,
+      });
+      this.packageVersion = latestPackageVersion;
+    }
   }
 
   async prepare() {
-    if(this.storeDir && !pathExistsSync(this.storeDir)) {
-        fse.mkdirpSync(this.storeDir);
+    if (this.storeDir && !pathExistsSync(this.storeDir)) {
+      fse.mkdirpSync(this.storeDir);
     }
     if (this.packageVersion === 'latest') {
       this.packageVersion = await getNpmLatestVersion(this.packageName);
@@ -92,22 +91,37 @@ class Package {
   }
   // 获取入口文件的路径
   getRootFilePath() {
-    // 获取package.json所在目录
-    const dir = packageDirectorySync(this.targetPath);
-    if (dir) {
-      // 读取package.json
-      const pkgJson = JSON.parse(fse.readFileSync(path.resolve(dir, 'core/cli/', 'package.json')))
-      console.log('pkgJson', pkgJson);
-      // 寻找main/lib
-      if (pkgJson && pkgJson.main) {
-        // 路径兼容处理 window/mac
-        return formatPath(path.resolve(dir, pkgJson.main));
+    function _getRootFile(targetPath) {
+      // 获取package.json所在目录
+      const dir = packageDirectorySync(targetPath);
+        console.log('targetPath', targetPath);
+    //   'core/cli/'
+      if (dir) {
+        // 读取package.json
+        const pkgJson = JSON.parse(
+          fse.readFileSync(path.resolve(dir, 'package.json'))
+        );
+        console.log('pkgJson', pkgJson);
+        // 寻找main/lib
+        if (pkgJson && pkgJson.main) {
+          // 路径兼容处理 window/mac
+          return formatPath(path.resolve(dir, pkgJson.main));
+        }
+        return null;
       }
     }
-    return null;
+    if (this.storeDir) {
+      return _getRootFile(this.cacheFilePath);
+    } else {
+      return _getRootFile(this.targetPath);
+    }
+    return
   }
-  getSpecificCacheFilePath (packageVersion) {
-    return path.resolve(this.storeDir, `_${this.cacheFilePathPrefix}@${packageVersion}@${this.packageName}`);
+  getSpecificCacheFilePath(packageVersion) {
+    return path.resolve(
+      this.storeDir,
+      `_${this.cacheFilePathPrefix}@${packageVersion}@${this.packageName}`
+    );
   }
 }
 

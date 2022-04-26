@@ -5,9 +5,9 @@ import proccess from 'node:process';
 import Package from '@zero-cli-dev/package';
 import log from '@zero-cli-dev/log';
 import path from 'node:path';
-// import { createRequire } from 'node:module';
 // import { cp } from 'fs';
-// const require = createRequire(import.meta.url);
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 
 const SETTINGS = {
   init: '@zero-cli-dev/init',
@@ -51,7 +51,7 @@ async function exec() {
   const rootFile = pkg.getRootFilePath();
   console.log('rootFile', rootFile);
   if (rootFile) {
-    // require(rootFile).apply(null, arguments);
+    require(rootFile).call(null, Array.from(arguments));
     // 使用子进程调用优化性能
     // cp.spawn()
   }

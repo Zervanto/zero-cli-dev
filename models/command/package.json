@@ -1,7 +1,7 @@
 {
-  "name": "@zero-cli-dev/init",
+  "name": "command",
   "version": "0.0.7",
-  "description": "@zero-cli-dev/init",
+  "description": "> TODO: description",
   "author": "zervanto <1019335509@qq.com>",
   "homepage": "https://github.com/Zervanto/zero-cli-dev#readme",
   "license": "ISC",
@@ -14,9 +14,6 @@
     "lib"
   ],
   "type": "module",
-  "publishConfig": {
-    "access": "public"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Zervanto/zero-cli-dev.git"
@@ -24,11 +21,7 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "dependencies": {
-    "@zero-cli-dev/command": "file:../../models/command"
-  },
   "bugs": {
     "url": "https://github.com/Zervanto/zero-cli-dev/issues"
-  },
-  "gitHead": "34579cb846a64b4e7d8913b1d80132b26c0aebca"
+  }
 }

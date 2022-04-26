@@ -1,6 +1,8 @@
 {
   "name": "root",
+  "main": "core/cli/bin/index.js",
   "private": true,
+  "type": "module",
   "workspaces": [
     "core/*",
     "commands/*",
