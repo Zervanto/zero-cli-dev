@@ -21,7 +21,13 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
+  "dependencies": {
+    "@zero-cli-dev/log": "file:../../utils/log",
+    "colors": "^1.4.0",
+    "semver": "^7.3.7"
+  },
   "bugs": {
     "url": "https://github.com/Zervanto/zero-cli-dev/issues"
-  }
+  },
+  "gitHead": "1877368331491d091e95faebfec538bd63c19cfa"
 }

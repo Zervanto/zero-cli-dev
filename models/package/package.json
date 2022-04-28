@@ -28,15 +28,15 @@
     "url": "https://github.com/Zervanto/zero-cli-dev/issues"
   },
   "dependencies": {
-    "@zero-cli-dev/format-path": "file:../../utils/format-path",
-    "@zero-cli-dev/get-npm-info": "file:../../utils/get-npm-info",
-    "@zero-cli-dev/log": "file:../../utils/log",
-    "@zero-cli-dev/utils": "file:../../utils/utils",
+    "@zero-cli-dev/format-path": "^0.0.8",
+    "@zero-cli-dev/get-npm-info": "^0.0.8",
+    "@zero-cli-dev/log": "^0.0.8",
+    "@zero-cli-dev/utils": "^0.0.8",
     "fs-extra": "^10.1.0",
     "npminstall": "^6.1.0",
     "path-exists": "^5.0.0",
     "pkg-dir": "^6.0.1",
     "user-home": "^3.0.0"
   },
-  "gitHead": "34579cb846a64b4e7d8913b1d80132b26c0aebca"
+  "gitHead": "1877368331491d091e95faebfec538bd63c19cfa"
 }

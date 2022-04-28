@@ -1,6 +1,6 @@
 {
   "name": "root",
-  "main": "core/cli/bin/index.js",
+  "main": "commands/init/lib/index.js",
   "private": true,
   "type": "module",
   "workspaces": [

@@ -23,18 +23,6 @@ function checkPkgVersion() {
   log.info('cli', pkg.version);
 }
 
-function checkNodeVersion() {
-  // 拿到node版本号 process.version
-  // 比对最低版本号
-  if (!semver.gte(process.version, constant.LOWEST_NODE_VERSION)) {
-    throw new Error(
-      colors.red(
-        `zero-cli 需要安装 v${constant.LOWEST_NODE_VERSION}以上的node版本`
-      )
-    );
-  }
-}
-
 function checkRoot() {
   rootCheck();
   // console.log(process.geteuid);
@@ -132,7 +120,6 @@ function prepare() {
 export default async function core() {
   try {
     await prepare();
-    checkNodeVersion(); // 检查node版本
     registerCommand(); // 命令注册
   
   } catch (e) {

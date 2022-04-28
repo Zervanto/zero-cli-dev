@@ -92,8 +92,11 @@ class Package {
   // 获取入口文件的路径
   getRootFilePath() {
     function _getRootFile(targetPath) {
+        // targetPath = 
+        // '/Users/zervantozhao/Desktop/code/work/demo/zero-cli/zero-cli-dev/commands/init';
       // 获取package.json所在目录
       const dir = packageDirectorySync(targetPath);
+     
         console.log('targetPath', targetPath);
     //   'core/cli/'
       if (dir) {
@@ -101,7 +104,7 @@ class Package {
         const pkgJson = JSON.parse(
           fse.readFileSync(path.resolve(dir, 'package.json'))
         );
-        console.log('pkgJson', pkgJson);
+        // console.log('pkgJson', pkgJson);
         // 寻找main/lib
         if (pkgJson && pkgJson.main) {
           // 路径兼容处理 window/mac
