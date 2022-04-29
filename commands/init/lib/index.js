@@ -1,5 +1,5 @@
 // 'use strict';
-
+import inquirer from 'inquirer';
 import log from '@zero-cli-dev/log';
 import Command from '@zero-cli-dev/command';
 class InitCommand extends Command {

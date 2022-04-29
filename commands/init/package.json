@@ -26,7 +26,8 @@
   },
   "dependencies": {
     "@zero-cli-dev/command": "file:../../models/command",
-    "@zero-cli-dev/log": "file:../../utils/log"
+    "@zero-cli-dev/log": "file:../../utils/log",
+    "inquirer": "^8.2.4"
   },
   "bugs": {
     "url": "https://github.com/Zervanto/zero-cli-dev/issues"
