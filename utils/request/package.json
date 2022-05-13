@@ -1,0 +1,29 @@
+{
+  "name": "@zero-cli-dev/request",
+  "version": "0.0.8",
+  "description": "> TODO: description",
+  "author": "zervanto <1019335509@qq.com>",
+  "homepage": "https://github.com/Zervanto/zero-cli-dev#readme",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zervanto/zero-cli-dev.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/Zervanto/zero-cli-dev/issues"
+  },
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
+}
