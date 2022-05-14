@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-function request() {
-    // TODO
+function request(obj = {}) {
+    return axios(obj)
 }
 
 export default request;
