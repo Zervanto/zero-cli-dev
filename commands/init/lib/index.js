@@ -5,6 +5,7 @@ import log from '@zero-cli-dev/log';
 import Command from '@zero-cli-dev/command';
 import semver from 'semver';
 import { getNpmSemverVersions } from '@zero-cli-dev/get-npm-info';
+import getProjectTemplate from './getProjectTemplate.js';
 // import { fetchAsyncQuestionProperty } from 'inquirer/lib/utils/utils';
 const TYPE_PROJECT = 'project';
 const TYPE_COMPONENT = 'component';
@@ -39,6 +40,12 @@ class InitCommand extends Command {
   }
   installTemplate(){}
   async prepare() {
+    // 判断项目模板是否存在
+    const template = await getProjectTemplate();
+    console.log(template);
+    if(!template || template.length === 0) {
+      throw new Error('项目模板不存在！');
+    }
     // 1. 判断当前目录是否为空
     const localPath = process.cwd();
     if (!this.isCwdEmpty(localPath)) {

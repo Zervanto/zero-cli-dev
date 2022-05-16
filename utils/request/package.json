@@ -17,6 +17,7 @@
     "type": "git",
     "url": "git+https://github.com/Zervanto/zero-cli-dev.git"
   },
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
